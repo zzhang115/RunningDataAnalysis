@@ -28,7 +28,7 @@ def fetch_price(producer, symbol):
     #@return None
     logger.debug('Start to fetch stock price for %s', symbol)
     try:
-        price = json.dumps(getQuotes(symbol))
+        price = json.dumps(getQuotes(symbol)).encode('utf-8')
         logger.debug('Get stock price %s', price)
         producer.send(topic = topic_name, value = price, timestamp_ms = time.time())
         logger.debug('Sent stock price for %s to kafka', symbol)
