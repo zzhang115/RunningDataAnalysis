@@ -30,13 +30,17 @@ def fetch_price(producer, symbol):
     logger.debug('Start to fetch stock price for %s', symbol)
     try:
         price = json.dumps(getQuotes(symbol)).encode('utf-8')
+        # print('------', getQuotes(symbol))
+        # print('******',price)
         logger.debug('Get stock price %s', price)
+        print('****', 8)
+        print('*****%s' %(topic_name))
         producer.send(topic = topic_name, value = price, timestamp_ms = time.time())
         logger.debug('Sent stock price for %s to kafka', symbol)
     except KafkaTimeoutError as timeout_error:
         logger.warn('Failed to send stock price for %s to kafka, caused by %s', (symbol, timeout_error))
     except Exception:
-        logger.warn('Failed to fetch stock price for %s', symbol)
+        logger.warn('Failed to send stock price for %s', symbol)
 
 def shutdown_hook(producer):
     try:
@@ -68,11 +72,10 @@ if __name__ == '__main__':
     fetch_price(producer, symbol)
 
     # schedule to run every 1 second
-    schedule.every(1).second.do(fetch_price, producer, symbol)
-
+    schedule.every(3).seconds.do(fetch_price, producer, symbol)
     # setup proper shutdown hook
     atexit.register(shutdown_hook, producer) # before it exit, it will call this function to close kafka connection
-    # its exit case includes if we interrupt this python program by keyboard
+    # its exit case includes if we interrupt this python program by keyboard or before it ends normally
 
     while True:
         schedule.run_pending()
@@ -80,4 +83,4 @@ if __name__ == '__main__':
 
 # 1. write log info is very important
 # 2. atexit, we write a shutdown_hook program is very necessary
-
+# 3. kafka it depends on zookeeper, before we start kafka, we need to start zookeeper firstly
