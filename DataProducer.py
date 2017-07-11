@@ -55,11 +55,11 @@ if __name__ == '__main__':
     fetch_price(producer, symbol)
 
     # schedule to run every 1 second
-    # schedule.every(1).second.do(fetch_price, producer, symbol)
-    #
-    # while True:
-    #     schedule.run_pending()
-    #     time.sleep(1)
+    schedule.every(1).second.do(fetch_price, producer, symbol)
+
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
 
 
 
