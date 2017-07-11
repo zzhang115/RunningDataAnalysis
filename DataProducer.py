@@ -19,7 +19,6 @@ import atexit # it means when it exit, this is charge to do something
 logger_format = '%(asctime)-15s %(message)s'
 logging.basicConfig(format=logger_format)
 logger = logging.getLogger('data-producer')
-
 # set logger level: TRACE, INFO(give you some information), DEBUG, WARNING, ERROR
 logger.setLevel(logging.DEBUG)
 
@@ -52,16 +51,20 @@ def shutdown_hook(producer):
 
 if __name__ == '__main__':
     # setup commandline arguments
-    parser = argparse.ArgumentParser()
-    parser.add_argument('symbol', help = 'symbol of stock')
-    parser.add_argument('topic_name', help = 'kafka topic')
-    parser.add_argument('kafka_broker', help = 'the location of kafka broker')
+    # parser = argparse.ArgumentParser()
+    # parser.add_argument('symbol', help = 'symbol of stock')
+    # parser.add_argument('topic_name', help = 'kafka topic')
+    # parser.add_argument('kafka_broker', help = 'the location of kafka broker')
 
     # parse arguments
-    args = parser.parse_args()
-    symbol = args.symbol
-    topic_name = args.topic_name
-    kafka_broker = args.kafka_broker
+    # args = parser.parse_args()
+    # symbol = args.symbol
+    # topic_name = args.topic_name
+    # kafka_broker = args.kafka_broker
+
+    symbol = 'AAPL'
+    topic_name = 'stock-analyzer'
+    kafka_broker = '192.168.99.100:9092'
 
     # instantiate a kafka producer
     producer = KafkaProducer(bootstrap_servers = kafka_broker)
