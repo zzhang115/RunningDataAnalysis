@@ -10,6 +10,7 @@ import json
 import time
 import logging
 import schedule
+import atexit # it means when it exit, this is charge to do something
 
 # default kafka setting
 # topic_name = 'stock-analysis'
@@ -37,6 +38,18 @@ def fetch_price(producer, symbol):
     except Exception:
         logger.warn('Failed to fetch stock price for %s', symbol)
 
+def shutdown_hook(producer):
+    try:
+        producer.flush(10)
+    except KafkaError as kafkaError:
+        logger.warn('Failed to flush pending messages to kafka')
+    finally:
+        try:
+            producer.close()
+            logger.info('kafka connection has been closed')
+        except Exception as e:
+            logger.warn('Failed to close kafka connection')
+
 if __name__ == '__main__':
     # setup commandline arguments
     parser = argparse.ArgumentParser()
@@ -56,6 +69,10 @@ if __name__ == '__main__':
 
     # schedule to run every 1 second
     schedule.every(1).second.do(fetch_price, producer, symbol)
+
+    # setup proper shutdown hook
+    atexit.register(shutdown_hook, producer) # before it exit, it will call this function to close kafka connection
+    # its exit case includes if we interrupt this python program by keyboard
 
     while True:
         schedule.run_pending()
