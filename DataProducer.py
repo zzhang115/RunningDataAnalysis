@@ -30,11 +30,7 @@ def fetch_price(producer, symbol):
     logger.debug('Start to fetch stock price for %s', symbol)
     try:
         price = json.dumps(getQuotes(symbol)).encode('utf-8')
-        # print('------', getQuotes(symbol))
-        # print('******',price)
         logger.debug('Get stock price %s', price)
-        print('****', 8)
-        print('*****%s' %(topic_name))
         producer.send(topic = topic_name, value = price, timestamp_ms = time.time())
         logger.debug('Sent stock price for %s to kafka', symbol)
     except KafkaTimeoutError as timeout_error:
