@@ -78,6 +78,6 @@ if __name__ == '__main__':
         schedule.run_pending()
         time.sleep(1)
 
-
-
+# 1. write log info is very important
+# 2. atexit, we write a shutdown_hook program is very necessary
 
