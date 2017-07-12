@@ -31,7 +31,11 @@ def fetch_price(producer, symbol):
         price = json.dumps(getQuotes(symbol))#.encode('utf-8')
         logger.debug('Get stock price %s', price)
         # producer.send(topic = topic_name, value = price, timestamp_ms = time.time())
-        producer.send(topic='stock-analyzer', value=b'stock-analyzer', timestamp_ms=time.time())
+        # print(time.strftime('%Y-%m-%d %H:%M:%S'))
+        # value format can affect sending process, it may leads fail
+        # print(time.time())
+        producer.send(topic='stock-analyzer', value=price)
+        # producer.send(topic='stock-analyzer', value=b'stock-analyzer', timestamp_ms=None)
         logger.debug('Sent stock price for %s to kafka', symbol)
     except KafkaTimeoutError as timeout_error:
         logger.warn('Failed to send stock price for %s to kafka, caused by %s', (symbol, timeout_error))
@@ -68,7 +72,8 @@ if __name__ == '__main__':
     kafka_broker = '192.168.99.100:9092'
 
     # instantiate a kafka producer
-    producer = KafkaProducer(bootstrap_servers=kafka_broker)
+    # producer = KafkaProducer(bootstrap_servers=kafka_broker)
+    producer = KafkaProducer(bootstrap_servers=kafka_broker, value_serializer=lambda v: json.dumps(v).encode('utf-8'))
     fetch_price(producer, symbol)
 
     # schedule to run every 1 second
