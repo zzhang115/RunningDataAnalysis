@@ -33,8 +33,9 @@ def fetch_price(producer, symbol):
         # producer.send(topic = topic_name, value = price, timestamp_ms = time.time())
         # print(time.strftime('%Y-%m-%d %H:%M:%S'))
         # value format can affect sending process, it may leads fail
-        # print(time.time())
+        # the following function is used to send json message to kafka
         producer.send(topic='stock-analyzer', value=price)
+        # the following function is just to send string message to kafka
         # producer.send(topic='stock-analyzer', value=b'stock-analyzer', timestamp_ms=None)
         logger.debug('Sent stock price for %s to kafka', symbol)
     except KafkaTimeoutError as timeout_error:
