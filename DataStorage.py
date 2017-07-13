@@ -31,7 +31,20 @@ def persist_data(stock_data, cassandra_session):
     :param cassandra_session: a session created using cassandra-driver
     :return: None
     '''
-    logger.debug('Start to persist data to cassandra%s', stock_data)
+    # logger.debug('Start to persist data to cassandra%s', stock_data)
+    parser = json.loads(stock_data)[0]
+    symbol = parser.get('StockSymbol')
+    price = float(parser.get('LastTradePrice'))
+    tradetime = parser.get('LastTradeDateTime')
+    print(price, '---', tradetime)
+    statement = 'INSERT INTO %s (stock_symbol, trade_time, trade_price) VALUES(%s, %s, %f)' %(symbol, tradetime, price)
+    logger.info()
+
+def shutdown_hook(consumer, session):
+    consumer.close()
+    logger.info('Kafka consumer has been closed')
+    session.close()
+    logger.info('Cassandra session has been closed')
 
 if __name__ == '__main__':
     # - set commandline arguments
