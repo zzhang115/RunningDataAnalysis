@@ -1,8 +1,9 @@
 # - need to read from kafka, topic
 # - need to write to cassandra, table
 
-from kafka import KafkaConsumer
+# from kafka import KafkaConsumer
 from cassandra.cluster import Cluster
+from kafka import KafkaConsumer
 from kafka.errors import KafkaError, KafkaTimeoutError
 
 import argparse
@@ -31,19 +32,22 @@ def persist_data(stock_data, cassandra_session):
     :param cassandra_session: a session created using cassandra-driver
     :return: None
     '''
-    # logger.debug('Start to persist data to cassandra%s', stock_data)
-    parser = json.loads(stock_data)[0]
-    symbol = parser.get('StockSymbol')
-    price = float(parser.get('LastTradePrice'))
-    tradetime = parser.get('LastTradeDateTime')
-    print(price, '---', tradetime)
-    statement = 'INSERT INTO %s (stock_symbol, trade_time, trade_price) VALUES(%s, %s, %f)' %(symbol, tradetime, price)
-    logger.info()
+    logger.debug('Start to persist data to cassandra%s', stock_data)
+    decode_stock_data = stock_data.decode('utf-8').replace('\\\"', '\"')
+    print(decode_stock_data)
+    parser = json.loads(decode_stock_data)
+    # print(parser)
+    # symbol = parser.get('StockSymbol')
+    # price = float(parser.get('LastTradePrice'))
+    # tradetime = parser.get('LastTradeDateTime')
+    # print(price, '---', tradetime)
+    # statement = 'INSERT INTO %s (stock_symbol, trade_time, trade_price) VALUES(%s, %s, %f)' %(symbol, tradetime, price)
+    # logger.info('finish insert data into cassandra table')
 
 def shutdown_hook(consumer, session):
     consumer.close()
     logger.info('Kafka consumer has been closed')
-    session.close()
+    session.shutdown()
     logger.info('Cassandra session has been closed')
 
 if __name__ == '__main__':
@@ -72,4 +76,5 @@ if __name__ == '__main__':
     atexit.register(shutdown_hook, consumer, session)
     for msg in consumer:
         # - implement a function to persist data to cassandra
+        # print(msg.value)
         persist_data(msg.value, session)
