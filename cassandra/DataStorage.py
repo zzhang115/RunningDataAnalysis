@@ -69,6 +69,7 @@ if __name__ == '__main__':
     # - setup a cassandra
     cassandra_cluster = Cluster(contact_points=cassandra_broker)
     session = cassandra_cluster.connect(keyspace)
+    atexit.register(shutdown_hook, consumer, session)
     for msg in consumer:
         # - implement a function to persist data to cassandra
         persist_data(msg.value, session)
