@@ -33,7 +33,7 @@ def persist_data(stock_data, cassandra_session):
     :return: None
     '''
     logger.debug('Start to persist data to cassandra%s', stock_data)
-    decode_stock_data = stock_data.decode('utf-8').replace('\\\"', '\"')
+    decode_stock_data = stock_data.decode('utf-8').replace('\\\"', '\"').replace('\"[', '[').replace(']\"', ']')
     print(decode_stock_data)
     parser = json.loads(decode_stock_data)
     # print(parser)
