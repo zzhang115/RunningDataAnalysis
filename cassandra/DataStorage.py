@@ -12,12 +12,13 @@ import time
 import logging
 import schedule
 import atexit # it means when it exit, this is charge to do something
+from ast import literal_eval
 
 # default kafka and cassandra setting
 topic_name = 'stock-analyzer'
 kafka_broker = '192.168.99.100:9092'
 keyspace = 'stock'
-data_table = 'stock'
+table = 'stock'
 cassandra_broker = ['192.168.99.100']
 
 logger_format = '%(asctime)-15s %(message)s'
@@ -33,16 +34,15 @@ def persist_data(stock_data, cassandra_session):
     :return: None
     '''
     logger.debug('Start to persist data to cassandra%s', stock_data)
-    decode_stock_data = stock_data.decode('utf-8').replace('\\\"', '\"').replace('\"[', '[').replace(']\"', ']')
-    print(decode_stock_data)
-    parser = json.loads(decode_stock_data)
-    # print(parser)
-    # symbol = parser.get('StockSymbol')
-    # price = float(parser.get('LastTradePrice'))
-    # tradetime = parser.get('LastTradeDateTime')
-    # print(price, '---', tradetime)
-    # statement = 'INSERT INTO %s (stock_symbol, trade_time, trade_price) VALUES(%s, %s, %f)' %(symbol, tradetime, price)
-    # logger.info('finish insert data into cassandra table')
+    decode = literal_eval(stock_data.decode('utf-8'))
+    json_dict= json.loads(decode)[0]
+    # decode_stock_data = stock_data.decode('utf-8').replace('\\\"', '\"').replace('\"[', '').replace(']\"', '')
+    symbol = json_dict.get('StockSymbol')
+    price = float(json_dict.get('LastTradePrice'))
+    tradetime = json_dict.get('LastTradeDateTime')
+    statement = 'INSERT INTO %s (stock_symbol, trade_time, trade_price) VALUES(\'%s\', \'%s\', %f)' %(table, symbol, tradetime, price)
+    cassandra_session.execute(statement)
+    logger.info('finish insert data into cassandra table')
 
 def shutdown_hook(consumer, session):
     consumer.close()
@@ -76,5 +76,4 @@ if __name__ == '__main__':
     atexit.register(shutdown_hook, consumer, session)
     for msg in consumer:
         # - implement a function to persist data to cassandra
-        # print(msg.value)
         persist_data(msg.value, session)
