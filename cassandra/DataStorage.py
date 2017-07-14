@@ -34,8 +34,9 @@ def persist_data(stock_data, cassandra_session):
     :return: None
     '''
     logger.debug('Start to persist data to cassandra%s', stock_data)
-    decode = literal_eval(stock_data.decode('utf-8'))
-    json_dict= json.loads(decode)[0]
+    # - stock_data we get is just byte array, we need to transfer it to json array string, then use literal_eval to transfter string to list
+    stock_data = literal_eval(stock_data.decode('utf-8'))
+    json_dict= json.loads(stock_data)[0]
     # decode_stock_data = stock_data.decode('utf-8').replace('\\\"', '\"').replace('\"[', '').replace(']\"', '')
     symbol = json_dict.get('StockSymbol')
     price = float(json_dict.get('LastTradePrice'))
