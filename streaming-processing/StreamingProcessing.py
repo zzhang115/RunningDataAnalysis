@@ -56,5 +56,6 @@ if __name__ == '__main__':
     kafka_producer = KafkaProducer(bootstrap_servers=kafka_borker)
     # - setup proper shutdown hook
     atexit.register(shutdown_hook, kafka_producer)
-
+    ssc.start()
+    ssc.awaitTermination()
 
