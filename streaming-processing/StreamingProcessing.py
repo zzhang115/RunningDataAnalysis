@@ -19,22 +19,26 @@ logger = logging.getLogger('stream-process')
 logger.setLevel(logging.INFO)
 
 def process(timeobj, rdd):
-    pass
+    print(rdd)
 
 def shutdown_hook(producer):
     try:
         logger.info('flush pending messages to kafka')
+        # - flush(10) 10 is ten seconds timeout
         producer.flush(10)
         logger.info('finish flushing pending message')
     except KafkaError as kafka_error:
         logger.warn('Failed to flush pending message to kafka')
+    finally:
+        try:
+            producer.close(10)
+        except Exception as e:
+            logger.warn('Failed to close kafka connection')
 
-    producer.close(10)
 if __name__ == '__main__':
     if(len(sys.argv) != 4):
         print('Usage: streaming processing [topic] [new_topic] [kafka_broker')
         exit(1)
-
     topic, new_topic, kafka_borker = sys.argv[1:]
     # - setup connection to spark cluster
     # - 2 means how many cores we use for computation
@@ -44,7 +48,6 @@ if __name__ == '__main__':
     sc.setLogLevel('ERROR')
     # - similar to water tap, open water tap per 5 seconds to handle data
     ssc = StreamingContext(sc, 5)
-
     # - create a data stream from spark
     directKafkaStream = KafkaUtils.createDirectStream(ssc, [topic],{'metadata.broker.list' : kafka_borker})
     # - for each RDD, do something
