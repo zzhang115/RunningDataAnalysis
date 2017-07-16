@@ -19,19 +19,21 @@ logging.basicConfig(format=logger_format)
 logger = logging.getLogger('stream-process')
 logger.setLevel(logging.INFO)
 
-def process(timeobj, rdd):
-    num_of_records = rdd.count()
-    print(num_of_records)
-    if num_of_records == 0:
-        return
-    print(rdd.map(lambda record : record))
+def process_stream(stream):
+    def pair(data):
+        record = print(data[1])
+    # num_of_records = rdd.count()
+    # print(num_of_records)
+    # if num_of_records == 0:
+    #     return
+    # print(rdd.map(lambda record : record))
     # price_sum = rdd.map(lambda record: float(json.loads(record[1].decode('utf-8'))[0].get('LastTradePrice'))).reduce(lambda  a, b : a + b)
     # average_price = price_sum / num_of_records
     # logger.info('Receive %d records from Kafka, average price is %d', num_of_records, average_price)
     # stock_data = literal_eval(stock_data.decode('utf-8'))
     # json_dict= json.loads(stock_data)[0]
     # price = float(json_dict.get('LastTradePrice'))
-
+    parsed = stream.map(lambda v : json.loads(v[1]))
 
 def shutdown_hook(producer):
     try:
@@ -63,7 +65,7 @@ if __name__ == '__main__':
     # - create a data stream from spark
     directKafkaStream = KafkaUtils.createDirectStream(ssc, [topic],{'metadata.broker.list' : kafka_borker})
     # - for each RDD, do something
-    directKafkaStream.foreachRDD(process)
+    process_stream(directKafkaStream)
     # - instantiate kafka producer
     kafka_producer = KafkaProducer(bootstrap_servers=kafka_borker)
     # - setup proper shutdown hook
