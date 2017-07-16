@@ -20,13 +20,14 @@ logger = logging.getLogger('stream-process')
 logger.setLevel(logging.INFO)
 
 def process(timeobj, rdd):
-    print(rdd)
     num_of_records = rdd.count()
+    print(num_of_records)
     if num_of_records == 0:
         return
-    price_sum = rdd.map(lambda record: float(json.loads(record[1].decode('utf-8'))[0].get('LastTradePrice'))).reduce(lambda  a, b : a + b)
-    average_price = price_sum / num_of_records
-    logger.info('Receive %d records from Kafka, average price is %d', num_of_records, average_price)
+    print(rdd.map(lambda record : record))
+    # price_sum = rdd.map(lambda record: float(json.loads(record[1].decode('utf-8'))[0].get('LastTradePrice'))).reduce(lambda  a, b : a + b)
+    # average_price = price_sum / num_of_records
+    # logger.info('Receive %d records from Kafka, average price is %d', num_of_records, average_price)
     # stock_data = literal_eval(stock_data.decode('utf-8'))
     # json_dict= json.loads(stock_data)[0]
     # price = float(json_dict.get('LastTradePrice'))
@@ -48,7 +49,7 @@ def shutdown_hook(producer):
 
 if __name__ == '__main__':
     if(len(sys.argv) != 4):
-        print('Usage: streaming processing [topic] [new_topic] [kafka_broker')
+        print('Usage: streaming processing [topic] [new_topic] [kafka_broker]')
         exit(1)
     topic, new_topic, kafka_borker = sys.argv[1:]
     # - setup connection to spark cluster
