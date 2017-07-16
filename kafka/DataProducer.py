@@ -78,7 +78,7 @@ if __name__ == '__main__':
     fetch_price(producer, symbol)
 
     # schedule to run every 1 second
-    schedule.every(3).seconds.do(fetch_price, producer, symbol)
+    schedule.every(1).seconds.do(fetch_price, producer, symbol)
     # setup proper shutdown hook
     atexit.register(shutdown_hook, producer) # before it exit, it will call this function to close kafka connection
     # its exit case includes if we interrupt this python program by keyboard or before it ends normally

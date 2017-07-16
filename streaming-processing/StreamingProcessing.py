@@ -4,6 +4,7 @@
 import sys
 import atexit
 import logging
+import json
 from pyspark import SparkContext
 from pyspark.streaming import StreamingContext
 from pyspark.streaming.kafka import KafkaUtils
@@ -20,6 +21,16 @@ logger.setLevel(logging.INFO)
 
 def process(timeobj, rdd):
     print(rdd)
+    num_of_records = rdd.count()
+    if num_of_records == 0:
+        return
+    price_sum = rdd.map(lambda record: float(json.loads(record[1].decode('utf-8'))[0].get('LastTradePrice'))).reduce(lambda  a, b : a + b)
+    average_price = price_sum / num_of_records
+    logger.info('Receive %d records from Kafka, average price is %d', num_of_records, average_price)
+    # stock_data = literal_eval(stock_data.decode('utf-8'))
+    # json_dict= json.loads(stock_data)[0]
+    # price = float(json_dict.get('LastTradePrice'))
+
 
 def shutdown_hook(producer):
     try:
