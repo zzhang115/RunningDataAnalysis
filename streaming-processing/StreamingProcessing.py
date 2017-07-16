@@ -63,7 +63,8 @@ if __name__ == '__main__':
     # - similar to water tap, open water tap per 5 seconds to handle data
     ssc = StreamingContext(sc, 5)
     # - create a data stream from spark
-    directKafkaStream = KafkaUtils.createDirectStream(ssc, [topic],{'metadata.broker.list' : kafka_borker})
+    directKafkaStream = KafkaUtils.createStream(ssc, 'stock-analyzer', 'stock-price-average',{'metadata.broker.list' : kafka_borker})
+    # directKafkaStream = KafkaUtils.createDirectStream(ssc, [topic],{'metadata.broker.list' : kafka_borker})
     # - for each RDD, do something
     process_stream(directKafkaStream)
     # - instantiate kafka producer

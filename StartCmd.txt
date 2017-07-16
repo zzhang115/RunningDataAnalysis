@@ -7,7 +7,7 @@ Check Vm Ip Address:
 Docker-machine ip bigdata
 
 After reboot system: # use terminal to link our virtual box host
-Docker-machine start bigdata
+docker-machine start bigdata
 
 Run Vm When Open A New Terminal Window Every Time:
 eval $(docker-machine env bigdata)
