@@ -41,11 +41,13 @@ def process_stream(stream):
     def pair(data):
         # print('****', literal_eval(data[1]))
         record = json.loads(literal_eval(data[1]))[0]
+        print(record.get('StockSymbol'), '***', (float(record.get('LastTradePrice')), 1))
         return record.get('StockSymbol'), (float(record.get('LastTradePrice')), 1)
 
     def divide(k, v):
         return k, v[0] / v[1]
 
+    # print('***', stream.map(pair))
     stream.map(pair).reduceByKey(lambda a, b: (a[0] + b[0], a[1] + b[1])).map(divide).foreachRDD(send_to_kafka)
     # num_of_records = rdd.count()
     # print(num_of_records)
