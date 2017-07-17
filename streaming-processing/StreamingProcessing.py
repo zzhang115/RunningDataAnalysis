@@ -11,6 +11,7 @@ from pyspark.streaming import StreamingContext
 from pyspark.streaming.kafka import KafkaUtils
 from kafka import KafkaProducer
 from kafka.errors import KafkaError, KafkaTimeoutError
+from ast import literal_eval
 
 topic = 'stock-analyzer'
 new_topic = 'average-stock-analyzer'
@@ -38,7 +39,8 @@ def process_stream(stream):
                 logger.warn('Failed to send average stock price to kafka, casued by %s', error.message)
 
     def pair(data):
-        record = json.loads(data[1].decode())
+        # print('****', literal_eval(data[1]))
+        record = json.loads(literal_eval(data[1]))[0]
         return record.get('StockSymbol'), (float(record.get('LastTradePrice')), 1)
 
     def divide(k, v):
@@ -52,7 +54,6 @@ def process_stream(stream):
     # print(rdd.map(lambda record : record))
     # price_sum = rdd.map(lambda record: float(json.loads(record[1].decode('utf-8'))[0].get('LastTradePrice'))).reduce(lambda  a, b : a + b)
     # average_price = price_sum / num_of_records
-    # logger.info('Receive %d records from Kafka, average price is %d', num_of_records, average_price)
     # stock_data = literal_eval(stock_data.decode('utf-8'))
     # json_dict= json.loads(stock_data)[0]
     # price = float(json_dict.get('LastTradePrice'))
@@ -62,10 +63,10 @@ def process_stream(stream):
 
 def shutdown_hook(producer):
     try:
-        logger.info('flush pending messages to kafka')
+        logger.info('Flush pending messages to kafka')
         # - flush(10) 10 is ten seconds timeout
         producer.flush(10)
-        logger.info('finish flushing pending message')
+        logger.info('Finish flushing pending message')
     except KafkaError as kafka_error:
         logger.warn('Failed to flush pending message to kafka')
     finally:
@@ -73,7 +74,7 @@ def shutdown_hook(producer):
             producer.close(10)
         except Exception as e:
             logger.warn('Failed to close kafka connection')
-
+        logger.info('Finish closing kafka producer')
 if __name__ == '__main__':
     # if(len(sys.argv) != 4):
     #     print('Usage: streaming processing [topic] [new_topic] [kafka_broker]')
