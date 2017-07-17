@@ -5,23 +5,46 @@ import sys
 import atexit
 import logging
 import json
+import time
 from pyspark import SparkContext
 from pyspark.streaming import StreamingContext
 from pyspark.streaming.kafka import KafkaUtils
 from kafka import KafkaProducer
 from kafka.errors import KafkaError, KafkaTimeoutError
 
-topic = ''
-new_topic = ''
-kafka_borker = ''
+topic = 'stock-analyzer'
+new_topic = 'average-stock-analyzer'
+kafka_borker = '192.168.99.100:9092'
 logger_format = '%(asctime)-15s %(message)s'
 logging.basicConfig(format=logger_format)
 logger = logging.getLogger('stream-process')
 logger.setLevel(logging.INFO)
 
 def process_stream(stream):
+    def send_to_kafka(rdd):
+        results = rdd.collect()
+        for r in results:
+            data = json.dumps(
+                {
+                    'symbol' : r[0],
+                    'timestamp' : time.time(),
+                    'average' : r[1]
+                }
+            )
+            try:
+                logger.info('Sending average price %s to kafka' %data)
+                kafka_producer.send(new_topic, value = data)
+            except KafkaError as error:
+                logger.warn('Failed to send average stock price to kafka, casued by %s', error.message)
+
     def pair(data):
-        record = print(data[1])
+        record = json.loads(data[1].decode())
+        return record.get('StockSymbol'), (float(record.get('LastTradePrice')), 1)
+
+    def divide(k, v):
+        return k, v[0] / v[1]
+
+    stream.map(pair).reduceByKey(lambda a, b: (a[0] + b[0], a[1] + b[1])).map(divide).foreachRDD(send_to_kafka)
     # num_of_records = rdd.count()
     # print(num_of_records)
     # if num_of_records == 0:
@@ -33,7 +56,9 @@ def process_stream(stream):
     # stock_data = literal_eval(stock_data.decode('utf-8'))
     # json_dict= json.loads(stock_data)[0]
     # price = float(json_dict.get('LastTradePrice'))
-    parsed = stream.map(lambda v : json.loads(v[1]))
+    # parsed = stream.map(lambda v : json.loads(v[1]))
+    # lines = stream.map(lambda x : x[1])
+    # print(lines)
 
 def shutdown_hook(producer):
     try:
@@ -50,10 +75,10 @@ def shutdown_hook(producer):
             logger.warn('Failed to close kafka connection')
 
 if __name__ == '__main__':
-    if(len(sys.argv) != 4):
-        print('Usage: streaming processing [topic] [new_topic] [kafka_broker]')
-        exit(1)
-    topic, new_topic, kafka_borker = sys.argv[1:]
+    # if(len(sys.argv) != 4):
+    #     print('Usage: streaming processing [topic] [new_topic] [kafka_broker]')
+    #     exit(1)
+    # topic, new_topic, kafka_borker = sys.argv[1:]
     # - setup connection to spark cluster
     # - 2 means how many cores we use for computation
     # - spark program name
@@ -63,8 +88,8 @@ if __name__ == '__main__':
     # - similar to water tap, open water tap per 5 seconds to handle data
     ssc = StreamingContext(sc, 5)
     # - create a data stream from spark
-    directKafkaStream = KafkaUtils.createStream(ssc, 'stock-analyzer', 'stock-price-average',{'metadata.broker.list' : kafka_borker})
-    # directKafkaStream = KafkaUtils.createDirectStream(ssc, [topic],{'metadata.broker.list' : kafka_borker})
+    # directKafkaStream = KafkaUtils.createStream(ssc, kafka_borker, 'spark-streaming-consumer',{topic : 1})
+    directKafkaStream = KafkaUtils.createDirectStream(ssc, [topic],{'metadata.broker.list' : kafka_borker})
     # - for each RDD, do something
     process_stream(directKafkaStream)
     # - instantiate kafka producer
