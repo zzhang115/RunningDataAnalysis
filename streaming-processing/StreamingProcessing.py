@@ -32,9 +32,10 @@ def process_stream(stream):
                     'average' : r[1]
                 }
             )
+            print('data:', data.encode('utf-8'))
             try:
                 logger.info('Sending average price %s to kafka' %data)
-                kafka_producer.send(new_topic, value = data)
+                kafka_producer.send(new_topic, value = data.encode('utf-8'))
             except KafkaError as error:
                 logger.warn('Failed to send average stock price to kafka, casued by %s', error.message)
 
@@ -44,11 +45,10 @@ def process_stream(stream):
         print(record.get('StockSymbol'), '***', (float(record.get('LastTradePrice')), 1))
         return record.get('StockSymbol'), (float(record.get('LastTradePrice')), 1)
 
-    def divide(k, v):
-        return k, v[0] / v[1]
+    # print('***', tuple(map(pair, stream))[0])
+    # stream.map(pair).reduceByKey(lambda a, b: (a[0] + b[0], a[1] + b[1])).map(lambda k, x_y: x_y[0] / x_y[1]).foreachRDD(send_to_kafka)
+    stream.map(pair).reduceByKey(lambda a, b: (a[0] + b[0], a[1] + b[1])).foreachRDD(send_to_kafka)
 
-    # print('***', stream.map(pair))
-    stream.map(pair).reduceByKey(lambda a, b: (a[0] + b[0], a[1] + b[1])).map(divide).foreachRDD(send_to_kafka)
     # num_of_records = rdd.count()
     # print(num_of_records)
     # if num_of_records == 0:
