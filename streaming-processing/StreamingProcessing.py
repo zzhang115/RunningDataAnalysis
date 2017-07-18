@@ -40,13 +40,13 @@ def process_stream(stream):
                 logger.warn('Failed to send average stock price to kafka, casued by %s', error.message)
 
     def pair(data):
-        # print('****', literal_eval(data[1]))
         record = json.loads(literal_eval(data[1]))[0]
         print(record.get('StockSymbol'), '***', (float(record.get('LastTradePrice')), 1))
         return record.get('StockSymbol'), (float(record.get('LastTradePrice')), 1)
 
     # def pair2(symbol, x_y): # missing 1 required positional argument: 'x_y'
     #     return symbol, x_y[0] / x_y[1]
+    # stream receive not just one message at the same time, so it use reduceByKey
     stream.map(pair).reduceByKey(lambda a, b: (a[0] + b[0], a[1] + b[1])).foreachRDD(send_to_kafka)
     # stream.map(pair).reduceByKey(lambda a, b: (a[0] + b[0], a[1] + b[1])).foreachRDD(send_to_kafka)
 
