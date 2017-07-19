@@ -1,0 +1,11 @@
+{
+  "name": "stock-visualizer",
+  "version": "0.0.1",
+  "description": "simple web app to display stock data",
+  "dependencies": {
+    "express": "^4.15.3",
+    "minimist": "^1.2.0",
+    "smoothie": "^1.29.1",
+    "socket.io": "^2.0.3"
+  }
+}
