@@ -4,7 +4,6 @@
   "description": "simple web app to display stock data",
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "d3": "^4.10.0",
     "express": "^4.15.3",
     "jquery": "^3.2.1",
     "minimist": "^1.2.0",
