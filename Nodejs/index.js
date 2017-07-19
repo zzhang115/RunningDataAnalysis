@@ -22,6 +22,7 @@ redisclient.on('message', function(channel, message){
 })
 // - setup webapp routing
 app.use(express.static(__dirname + 'public'));
+app.use('/jquery', express.static(__dirname + '/node_modules/jquery/'))
 server.listen(8080, function () {
     console.log('Server started at 8080')
 })
