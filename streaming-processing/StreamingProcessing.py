@@ -1,6 +1,6 @@
 # 1, read from kafka, kafka broker, kafka topic
 # 2, write data back to kafka, kafka broker, kafka topic
-
+# under the current path and run spark-submit --jars *.jar StreamingProcessing.py
 import sys
 import atexit
 import logging
