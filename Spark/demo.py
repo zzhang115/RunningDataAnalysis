@@ -30,7 +30,7 @@ if __name__ == '__main__':
         print("output directory has already exits!")
         shutil.rmtree(output)
 
-    data2 = sc.textFile(file2).flatMap(lambda line: line.split(" "))
+    data2 = sc.textFile(file2).flatMap(lambda line: line.split(" ")).map(lambda word: (word, 1)).reduceByKey(lambda v1, v2: v1 + v2)
     data2.saveAsTextFile(output)
     sc.stop()
 
