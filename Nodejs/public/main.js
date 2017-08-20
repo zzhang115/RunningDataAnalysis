@@ -75,6 +75,7 @@ $(function () {
         "use strict";
         d3.select('#chart svg')
             .datum(data_points)
+            // .data(data_points)
             .transition()
             .duration(5)
             .call(chart);

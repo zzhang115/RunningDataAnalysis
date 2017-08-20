@@ -1,5 +1,6 @@
 // // - get command line arguments
 // // node index.js --port=8080 --redis_host=192.168.99.100 --redis_port=6379 --subscribe_channel=redis-stock-analyzer
+// // node index.js --port=8080 --redis_host=192.168.99.100 --redis_port=6379 --subscribe_topic=redis-stock-analyzer
 // var argv = require('minimist')(process.argv.slice(2));
 // var port = argv['port'];
 // var redis_host = argv['redis_host'];
