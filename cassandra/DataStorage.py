@@ -25,13 +25,6 @@ def logger(self):
     logger.setLevel(logging.INFO)
     return logger
 
-logger_format = '%(asctime)-15s %(message)s'
-logging.basicConfig(format=logger_format)
-logger = logging.getLogger('data-storage')
-# set logger level: TRACE, INFO(give you some information), DEBUG, WARNING, ERROR
-logger.setLevel(logging.DEBUG)
-
-
 def create(self):
     self.cassandra_session.execute(
         "create keyspace if not exists %s with replication={'class':'SimpleStrategy', "

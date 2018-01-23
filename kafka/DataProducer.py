@@ -4,6 +4,7 @@
 from kafka import KafkaProducer
 from googlefinance import getQuotes
 from kafka.errors import KafkaError, KafkaTimeoutError
+from flask import Flask, request, jsonify
 
 import argparse
 import json
@@ -11,6 +12,7 @@ import time
 import logging
 import schedule
 import atexit # it means when it exit, this is charge to do something
+
 
 # default kafka setting
 # topic_name = 'stock-analysis'
@@ -55,18 +57,49 @@ def shutdown_hook(producer):
         except Exception as e:
             logger.warn('Failed to close kafka connection')
 
+def add_stock(symbol):
+    symbols = set()
+    if not symbol:
+        return jsonify({
+            'error': 'Stock symbol cannot be empty'
+        }), 400
+    if symbol in symbols:
+        pass
+    else:
+        symbol = symbol.encode('utf-8')
+        symbols.add(symbol)
+        logger.info('Add stock retrieve job %s' % symbol)
+        schedule.add_job(fetch_price, 'interval', [symbol], seconds=1, id=symbol)
+    return jsonify(results=list(symbols)), 200
+
+def del_stock(symbol):
+    symbols = set()
+    logger.info('remove the %s' %symbol)
+    if not symbol:
+        return jsonify({
+            'error': 'Stock symbol cannot be empty'
+        }), 400
+    if symbol not in symbols:
+        pass
+    else:
+        symbol = symbol.encode('utf-8')
+        logger.info('remove the %s' %symbol)
+        symbols.remove(symbol)
+        schedule.remove_job(symbol)
+    return jsonify(results=list(symbols)), 200
+
 if __name__ == '__main__':
     # setup commandline arguments
-    # parser = argparse.ArgumentParser()
-    # parser.add_argument('symbol', help = 'symbol of stock')
-    # parser.add_argument('topic_name', help = 'kafka topic')
-    # parser.add_argument('kafka_broker', help = 'the location of kafka broker')
+    parser = argparse.ArgumentParser()
+    parser.add_argument('symbol', help = 'symbol of stock')
+    parser.add_argument('topic_name', help = 'kafka topic')
+    parser.add_argument('kafka_broker', help = 'the location of kafka broker')
 
     # parse arguments
-    # args = parser.parse_args()
-    # symbol = args.symbol
-    # topic_name = args.topic_name
-    # kafka_broker = args.kafka_broker
+    args = parser.parse_args()
+    symbol = args.symbol
+    topic_name = args.topic_name
+    kafka_broker = args.kafka_broker
 
     symbol = 'AAPL'
     topic_name = 'stock-analyzer'
