@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05a445b5-9128-469d-abf3-75028f51b9d8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/kafka/SearchKafka.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Nodejs/public/stock.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cassandra/DataStorage.py" afterPath="$PROJECT_DIR$/cassandra/DataStorage.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka/DataProducer.py" afterPath="$PROJECT_DIR$/kafka/DataProducer.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/index.js" afterPath="$PROJECT_DIR$/Nodejs/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka/SearchKafka.py" afterPath="$PROJECT_DIR$/kafka/SearchKafka.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,76 +32,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="StreamingProcessing.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/streaming-processing/StreamingProcessing.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-              <folding>
-                <element signature="e#188#198#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataConsumer.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kafka/DataConsumer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataProducer.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/kafka/DataProducer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="75" column="18" lean-forward="false" selection-start-line="75" selection-start-column="18" selection-end-line="75" selection-end-column="18" />
-              <folding>
-                <element signature="e#114#145#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataStorage.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/cassandra/DataStorage.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-418">
-              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
-                <marker date="1516680935704" expanded="true" signature="1029:1168" ph="create table... if" />
-                <marker date="1516680935704" expanded="true" signature="1952:2033" ph="INSERT INTO missing_value... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SearchKafka.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/kafka/SearchKafka.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="28" lean-forward="false" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RedisPublisher.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Redis/RedisPublisher.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="20" column="41" lean-forward="false" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -130,7 +61,6 @@
         <option value="$PROJECT_DIR$/Nodejs/index.html" />
         <option value="$PROJECT_DIR$/Nodejs/public/index.html" />
         <option value="$PROJECT_DIR$/Nodejs/package.json" />
-        <option value="$PROJECT_DIR$/Nodejs/index.js" />
         <option value="$PROJECT_DIR$/Nodejs/public/main.js" />
         <option value="$PROJECT_DIR$/Spark/backupfile.txt" />
         <option value="$PROJECT_DIR$/Spark/demo.txt" />
@@ -139,8 +69,11 @@
         <option value="$PROJECT_DIR$/Spark/demo.py" />
         <option value="$PROJECT_DIR$/streaming-processing/StreamingProcessing.py" />
         <option value="$PROJECT_DIR$/cassandra/DataStorage.py" />
-        <option value="$PROJECT_DIR$/kafka/SearchKafka.py" />
         <option value="$PROJECT_DIR$/kafka/DataProducer.py" />
+        <option value="$PROJECT_DIR$/kafka/SearchKafka.py" />
+        <option value="$PROJECT_DIR$/Nodejs/public/stock.py" />
+        <option value="$PROJECT_DIR$/Nodejs/public/stock.js" />
+        <option value="$PROJECT_DIR$/Nodejs/index.js" />
       </list>
     </option>
   </component>
@@ -733,14 +666,21 @@
       <option name="project" value="LOCAL" />
       <updated>1516680894019</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="modify kafka">
+      <created>1516682413514</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1516682413514</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="47" y="24" width="1319" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23566379" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23566379" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -772,7 +712,8 @@
     <MESSAGE value="add flatmap" />
     <MESSAGE value="refector files" />
     <MESSAGE value="modify cassandra" />
-    <option name="LAST_COMMIT_MESSAGE" value="modify cassandra" />
+    <MESSAGE value="modify kafka" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify kafka" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -781,13 +722,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/kafka/DataProducer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cassandra/DataStorage.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -912,36 +846,8 @@
     <entry file="file://$PROJECT_DIR$/Spark/demo2output/part-00001" />
     <entry file="file://$PROJECT_DIR$/Spark/demo1output/part-00001" />
     <entry file="file://$PROJECT_DIR$/Spark/demo2output/part-00000" />
-    <entry file="file://$PROJECT_DIR$/Nodejs/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="2" column="113" lean-forward="false" selection-start-line="2" selection-start-column="113" selection-end-line="2" selection-end-column="113" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Nodejs/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="20" column="72" lean-forward="false" selection-start-line="20" selection-start-column="72" selection-end-line="20" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Spark/demo5output/part-00001" />
     <entry file="file://$PROJECT_DIR$/Spark/demo5output/part-00000" />
-    <entry file="file://$PROJECT_DIR$/Nodejs/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="25" lean-forward="false" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Nodejs/public/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="64" column="14" lean-forward="false" selection-start-line="64" selection-start-column="14" selection-end-line="64" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Spark/demo4output/part-00000" />
     <entry file="file://$PROJECT_DIR$/Spark/demo4output/part-00001" />
     <entry file="file://$PROJECT_DIR$/streaming-processing/test.py" />
@@ -998,14 +904,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kafka/SearchKafka.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="28" lean-forward="false" selection-start-line="3" selection-start-column="28" selection-end-line="3" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/kafka/DataProducer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -1013,6 +911,60 @@
           <folding>
             <element signature="e#114#145#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/kafka/SearchKafka.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="8" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nodejs/public/stock.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1516683346220" expanded="true" signature="976:985" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nodejs/public/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="64" column="14" lean-forward="false" selection-start-line="64" selection-start-column="14" selection-end-line="64" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nodejs/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="20" column="72" lean-forward="false" selection-start-line="20" selection-start-column="72" selection-end-line="20" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nodejs/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="42" column="36" lean-forward="false" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Nodejs/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="25" lean-forward="false" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>

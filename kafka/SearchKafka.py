@@ -50,6 +50,6 @@ class ElasticSearch():
             self.es.bulk(index="test_index",body=bulk)
             bulk=[]
 if __name__ == '__main__':
-    ES=ElasticSearch("test","192.168.99.100:9092")
+    ES=ElasticSearch("Elastic Search","192.168.99.100:9092")
     ES.create_index()
-ES.deliver()
+    ES.deliver()
