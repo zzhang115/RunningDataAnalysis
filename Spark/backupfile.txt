@@ -1,4 +1,0 @@
-hi boy, this is test file
-my name is zzc
-this is a spark test text file
-

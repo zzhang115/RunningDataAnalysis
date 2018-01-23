@@ -1,6 +1,7 @@
 # 1, read from kafka, kafka broker, kafka topic
 # 2, write data back to kafka, kafka broker, kafka topic
 # under the current path and run spark-submit --jars *.jar StreamingProcessing.py
+
 import sys
 import atexit
 import logging
@@ -15,7 +16,7 @@ from ast import literal_eval
 
 topic = 'stock-analyzer'
 new_topic = 'average-stock-analyzer'
-kafka_borker = '192.168.99.100:9092'
+kafka_broker = '192.168.99.100:9092'
 logger_format = '%(asctime)-15s %(message)s'
 logging.basicConfig(format=logger_format)
 logger = logging.getLogger('stream-process')
@@ -41,14 +42,13 @@ def process_stream(stream):
 
     def pair(data):
         record = json.loads(literal_eval(data[1]))[0]
-        print(record.get('StockSymbol'), '***', (float(record.get('LastTradePrice')), 1))
+        print(record.get('StockSymbol'), '---', (float(record.get('LastTradePrice')), 1))
         return record.get('StockSymbol'), (float(record.get('LastTradePrice')), 1)
 
     # def pair2(symbol, x_y): # missing 1 required positional argument: 'x_y'
     #     return symbol, x_y[0] / x_y[1]
     # stream receive not just one message at the same time, so it use reduceByKey
     stream.map(pair).reduceByKey(lambda a, b: (a[0] + b[0], a[1] + b[1])).foreachRDD(send_to_kafka)
-    # stream.map(pair).reduceByKey(lambda a, b: (a[0] + b[0], a[1] + b[1])).foreachRDD(send_to_kafka)
 
     # num_of_records = rdd.count()
     # print(num_of_records)
@@ -78,6 +78,7 @@ def shutdown_hook(producer):
         except Exception as e:
             logger.warn('Failed to close kafka connection')
         logger.info('Finish closing kafka producer')
+
 if __name__ == '__main__':
     # if(len(sys.argv) != 4):
     #     print('Usage: streaming processing [topic] [new_topic] [kafka_broker]')
@@ -93,11 +94,11 @@ if __name__ == '__main__':
     ssc = StreamingContext(sc, 5)
     # - create a data stream from spark
     # directKafkaStream = KafkaUtils.createStream(ssc, kafka_borker, 'spark-streaming-consumer',{topic : 1})
-    directKafkaStream = KafkaUtils.createDirectStream(ssc, [topic],{'metadata.broker.list' : kafka_borker})
+    directKafkaStream = KafkaUtils.createDirectStream(ssc, [topic], {'metadata.broker.list' : kafka_broker})
     # - for each RDD, do something
     process_stream(directKafkaStream)
     # - instantiate kafka producer
-    kafka_producer = KafkaProducer(bootstrap_servers=kafka_borker)
+    kafka_producer = KafkaProducer(bootstrap_servers=kafka_broker)
     # - setup proper shutdown hook
     atexit.register(shutdown_hook, kafka_producer)
     ssc.start()
