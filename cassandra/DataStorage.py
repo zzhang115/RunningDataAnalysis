@@ -1,7 +1,3 @@
-# - need to read from kafka, topic
-# - need to write to cassandra, table
-
-# from kafka import KafkaConsumer
 from cassandra.cluster import Cluster
 from kafka import KafkaConsumer
 from kafka.errors import KafkaError, KafkaTimeoutError
@@ -21,11 +17,29 @@ keyspace = 'stock'
 table = 'stock'
 cassandra_broker = ['192.168.99.100']
 
+# - logging file configuration
+def logger(self):
+    Format="%(asctime)s - %(levelname)s - %(message)s"
+    logging.basicConfig(format=Format)
+    logger=logging.getLogger()
+    logger.setLevel(logging.INFO)
+    return logger
+
 logger_format = '%(asctime)-15s %(message)s'
 logging.basicConfig(format=logger_format)
 logger = logging.getLogger('data-storage')
 # set logger level: TRACE, INFO(give you some information), DEBUG, WARNING, ERROR
 logger.setLevel(logging.DEBUG)
+
+
+def create(self):
+    self.cassandra_session.execute(
+        "create keyspace if not exists %s with replication={'class':'SimpleStrategy', "
+        "'replication_factor':'3'} and durable_writes= 'true'" % self.__keyspace)
+    self.cassandra_session.set_keyspace(self.__keyspace)
+    self.cassandra_session.execute(
+        "create table if not exists %s(stock_symbol text,trade_time timestamp,trade_price float, "
+        "primary key ((stock_symbol),trade_time))" % self.__data_table)
 
 def persist_data(stock_data, cassandra_session):
     '''
@@ -53,20 +67,20 @@ def shutdown_hook(consumer, session):
 
 if __name__ == '__main__':
     # - set commandline arguments
-    # parser = argparse.ArgumentParser()
-    # parser.add_argument('topic_name', help='the kafka topic')
-    # parser.add_argument('kafka_broker', help='the location of kafka broker')
-    # parser.add_argument('keyspace', help='the keyspace to be used in cassandra')
-    # parser.add_argument('data_table', help='the data table to be used in cassandra')
-    # parser.add_argument('cassandra_broker', help='the location of cassandra broker')
+    parser = argparse.ArgumentParser()
+    parser.add_argument('topic_name', help='the kafka topic')
+    parser.add_argument('kafka_broker', help='the location of kafka broker')
+    parser.add_argument('keyspace', help='the keyspace to be used in cassandra')
+    parser.add_argument('data_table', help='the data table to be used in cassandra')
+    parser.add_argument('cassandra_broker', help='the location of cassandra broker')
 
     # - parse arguments
-    # args = parser.parse_args()
-    # topic_name = args.topic_name
-    # kafka_broker = args.kafka_broker
-    # keyspace = args.keyspace
-    # data_table = args.data_table
-    # cassandra_broker = args.cassandra_broker
+    args = parser.parse_args()
+    topic_name = args.topic_name
+    kafka_broker = args.kafka_broker
+    keyspace = args.keyspace
+    data_table = args.data_table
+    cassandra_broker = args.cassandra_broker
 
     # - setup a kafka consumer
     consumer = KafkaConsumer(topic_name, bootstrap_servers=kafka_broker)
@@ -75,6 +89,7 @@ if __name__ == '__main__':
     cassandra_cluster = Cluster(contact_points=cassandra_broker)
     session = cassandra_cluster.connect(keyspace)
     atexit.register(shutdown_hook, consumer, session)
+
+    # - implement a function to persist data to cassandra
     for msg in consumer:
-        # - implement a function to persist data to cassandra
         persist_data(msg.value, session)
