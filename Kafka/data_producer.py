@@ -1,9 +1,9 @@
 # specify kafka cluster and its topic to send event
 # specify one share and scrapy share information per seconds
 
-from kafka import KafkaProducer
+from Kafka import KafkaProducer
 from googlefinance import getQuotes
-from kafka.errors import KafkaError, KafkaTimeoutError
+from Kafka.errors import KafkaError, KafkaTimeoutError
 from flask import Flask, request, jsonify
 
 import argparse
@@ -14,7 +14,7 @@ import schedule
 import atexit # it means when it exit, this is charge to do something
 
 
-# default kafka setting
+# default Kafka setting
 # topic_name = 'stock-analysis'
 # kafka_broker = '127.0.0.1:9092'
 
@@ -25,7 +25,7 @@ logger = logging.getLogger('data-producer')
 logger.setLevel(logging.DEBUG)
 
 def fetch_price(producer, symbol):
-    #@param producer - instance of a kafka producer
+    #@param producer - instance of a Kafka producer
     #@param symbol - symbol of the stock, string type
     #@return None
     logger.debug('Start to fetch stock price for %s', symbol)
@@ -35,13 +35,13 @@ def fetch_price(producer, symbol):
         # producer.send(topic = topic_name, value = price, timestamp_ms = time.time())
         # print(time.strftime('%Y-%m-%d %H:%M:%S'))
         # value format can affect sending process, it may leads fail
-        # the following function is used to send json message to kafka
+        # the following function is used to send json message to Kafka
         producer.send(topic='stock-analyzer', value=price)
-        # the following function is just to send string message to kafka
+        # the following function is just to send string message to Kafka
         # producer.send(topic='stock-analyzer', value=b'stock-analyzer', timestamp_ms=None)
-        logger.debug('Sent stock price for %s to kafka', symbol)
+        logger.debug('Sent stock price for %s to Kafka', symbol)
     except KafkaTimeoutError as timeout_error:
-        logger.warn('Failed to send stock price for %s to kafka, caused by %s', (symbol, timeout_error))
+        logger.warn('Failed to send stock price for %s to Kafka, caused by %s', (symbol, timeout_error))
     except Exception:
         logger.warn('Failed to send stock price for %s', symbol)
 
@@ -49,13 +49,13 @@ def shutdown_hook(producer):
     try:
         producer.flush(10)
     except KafkaError as kafkaError:
-        logger.warn('Failed to flush pending messages to kafka')
+        logger.warn('Failed to flush pending messages to Kafka')
     finally:
         try:
             producer.close()
-            logger.info('kafka connection has been closed')
+            logger.info('Kafka connection has been closed')
         except Exception as e:
-            logger.warn('Failed to close kafka connection')
+            logger.warn('Failed to close Kafka connection')
 
 def add_stock(symbol):
     symbols = set()
@@ -92,8 +92,8 @@ if __name__ == '__main__':
     # setup commandline arguments
     parser = argparse.ArgumentParser()
     parser.add_argument('symbol', help = 'symbol of stock')
-    parser.add_argument('topic_name', help = 'kafka topic')
-    parser.add_argument('kafka_broker', help = 'the location of kafka broker')
+    parser.add_argument('topic_name', help = 'Kafka topic')
+    parser.add_argument('kafka_broker', help = 'the location of Kafka broker')
 
     # parse arguments
     args = parser.parse_args()
@@ -105,7 +105,7 @@ if __name__ == '__main__':
     topic_name = 'stock-analyzer'
     kafka_broker = '192.168.99.100:9092'
 
-    # instantiate a kafka producer
+    # instantiate a Kafka producer
     # producer = KafkaProducer(bootstrap_servers=kafka_broker)
     producer = KafkaProducer(bootstrap_servers=kafka_broker, value_serializer=lambda v: json.dumps(v).encode('utf-8'))
     fetch_price(producer, symbol)
@@ -113,7 +113,7 @@ if __name__ == '__main__':
     # schedule to run every 1 second
     schedule.every(2).seconds.do(fetch_price, producer, symbol)
     # setup proper shutdown hook
-    atexit.register(shutdown_hook, producer) # before it exit, it will call this function to close kafka connection
+    atexit.register(shutdown_hook, producer) # before it exit, it will call this function to close Kafka connection
     # its exit case includes if we interrupt this python program by keyboard or before it ends normally
 
     while True:
@@ -122,4 +122,4 @@ if __name__ == '__main__':
 
 # 1. write log info is very important
 # 2. atexit, we write a shutdown_hook program is very necessary
-# 3. kafka it depends on zookeeper, before we start kafka, we need to start zookeeper firstly
+# 3. Kafka it depends on zookeeper, before we start Kafka, we need to start zookeeper firstly

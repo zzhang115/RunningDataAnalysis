@@ -2,10 +2,56 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05a445b5-9128-469d-abf3-75028f51b9d8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Nodejs/public/stock.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docker/dockersetup.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Kafka/data_fetch.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/StreamingProcessing/stock_count.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/StreamingProcessing/streamdata.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Redis/RedisPublisher.py" afterPath="$PROJECT_DIR$/Redis/redis_publisher.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/cassandra/DataStorage.py" afterPath="$PROJECT_DIR$/Cassandra/data_storage.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/envstartcmd/StartCmd.txt" afterPath="$PROJECT_DIR$/Envstartcmd/startcmd.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/kafka/DataConsumer.py" afterPath="$PROJECT_DIR$/Kafka/data_consumer.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/kafka/DataProducer.py" afterPath="$PROJECT_DIR$/Kafka/data_producer.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/kafka/SearchKafka.py" afterPath="$PROJECT_DIR$/Kafka/search_kafka.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/streaming-processing/StreamingProcessing.py" afterPath="$PROJECT_DIR$/StreamingProcessing/streaming_processing.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/streaming-processing/dump.rdb" afterPath="$PROJECT_DIR$/StreamingProcessing/dump.rdb" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/streaming-processing/spark-streaming-kafka-0-8-assembly_2.11-2.2.0.jar" afterPath="$PROJECT_DIR$/StreamingProcessing/spark-streaming-kafka-0-8-assembly_2.11-2.2.0.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/index.js" afterPath="$PROJECT_DIR$/Nodejs/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka/SearchKafka.py" afterPath="$PROJECT_DIR$/kafka/SearchKafka.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/build/nv.d3.css" afterPath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/build/nv.d3.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/build/nv.d3.js" afterPath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/build/nv.d3.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/examples/documentation.html" afterPath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/examples/documentation.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/examples/site.html" afterPath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/examples/site.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/examples/stylesheets/pygment_trac.css" afterPath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/examples/stylesheets/pygment_trac.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/examples/stylesheets/styles.css" afterPath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/examples/stylesheets/styles.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/src/css/axis.css" afterPath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/src/css/axis.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/src/css/bars.css" afterPath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/src/css/bars.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/src/css/bullet.css" afterPath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/src/css/bullet.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/src/css/candlestick.css" afterPath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/src/css/candlestick.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/src/css/lineplusbar.css" afterPath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/src/css/lineplusbar.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/src/css/lines.css" afterPath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/src/css/lines.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/src/css/main.css" afterPath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/src/css/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/src/css/ohlc.css" afterPath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/src/css/ohlc.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/src/css/parallelcoordinates.css" afterPath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/src/css/parallelcoordinates.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/src/css/pie.css" afterPath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/src/css/pie.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/src/css/scatter.css" afterPath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/src/css/scatter.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/src/css/sparkline.css" afterPath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/src/css/sparkline.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/src/css/stackedarea.css" afterPath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/src/css/stackedarea.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/src/css/tooltip.css" afterPath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/src/css/tooltip.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/src/dom.js" afterPath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/src/dom.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/.npmignore" afterPath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/.npmignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/LICENSE.txt" afterPath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/LICENSE.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/README.md" afterPath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/bower.json" afterPath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/builder/index.html" afterPath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/builder/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/docs/example-final.html" afterPath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/docs/example-final.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/docs/index.html" afterPath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/docs/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/docs/tutorial.html" afterPath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/docs/tutorial.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/examples/example1.html" afterPath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/examples/example1.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/examples/server-load.html" afterPath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/examples/server-load.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/examples/server-load.js" afterPath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/examples/server-load.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/smoothie.d.ts" afterPath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/smoothie.d.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/smoothie.js" afterPath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/smoothie.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/cachecontrol/caches/__init__.py" afterPath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/cachecontrol/caches/__init__.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,7 +78,42 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="data_fetch.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Kafka/data_fetch.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="streamdata.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/StreamingProcessing/streamdata.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1125">
+              <caret line="75" column="28" lean-forward="false" selection-start-line="75" selection-start-column="28" selection-end-line="75" selection-end-column="28" />
+              <folding>
+                <element signature="e#0#43#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="stock_count.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/StreamingProcessing/stock_count.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="28" lean-forward="false" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -74,6 +155,10 @@
         <option value="$PROJECT_DIR$/Nodejs/public/stock.py" />
         <option value="$PROJECT_DIR$/Nodejs/public/stock.js" />
         <option value="$PROJECT_DIR$/Nodejs/index.js" />
+        <option value="$PROJECT_DIR$/Docker/dockersetup.sh" />
+        <option value="$PROJECT_DIR$/StreamingProcessing/DataFetch.py" />
+        <option value="$PROJECT_DIR$/StreamingProcessing/Stream.py" />
+        <option value="$PROJECT_DIR$/StreamingProcessing/stock_count.py" />
       </list>
     </option>
   </component>
@@ -132,48 +217,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="streaming-processing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShareAnalysis" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShareAnalysis" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kafka" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShareAnalysis" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShareAnalysis" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="envstartcmd" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShareAnalysis" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ShareAnalysis" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="env" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -188,7 +231,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="cassandra" />
+              <option name="myItemId" value="StreamingProcessing" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -238,6 +281,62 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ShareAnalysis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ShareAnalysis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Kafka" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ShareAnalysis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ShareAnalysis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Envstartcmd" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ShareAnalysis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ShareAnalysis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Docker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ShareAnalysis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ShareAnalysis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Cassandra" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -251,18 +350,18 @@
     <property name="js-jscs-nodeInterpreter" value="/usr/bin/node" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/cmd" />
-      <recent name="$PROJECT_DIR$/Nodejs/public" />
-      <recent name="$PROJECT_DIR$/streaming-processing" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/cassandra" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/envstartcmd" />
       <recent name="$PROJECT_DIR$/Spark" />
       <recent name="$PROJECT_DIR$/streaming-processing" />
       <recent name="$PROJECT_DIR$/env" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Kafka" />
+      <recent name="$PROJECT_DIR$/cmd" />
+      <recent name="$PROJECT_DIR$/Nodejs/public" />
+      <recent name="$PROJECT_DIR$/streaming-processing" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager" selected="Python.test">
@@ -297,7 +396,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="ShareAnalysis" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Redis/RedisPublisher.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Redis/redis_publisher.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -673,17 +772,25 @@
       <option name="project" value="LOCAL" />
       <updated>1516682413514</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="modify kafka and nodejs file">
+      <created>1516683464815</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1516683464815</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="47" y="24" width="1319" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23566379" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23566379" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32817337" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32686085" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -696,7 +803,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23374613" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32881" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -713,7 +819,8 @@
     <MESSAGE value="refector files" />
     <MESSAGE value="modify cassandra" />
     <MESSAGE value="modify kafka" />
-    <option name="LAST_COMMIT_MESSAGE" value="modify kafka" />
+    <MESSAGE value="modify kafka and nodejs file" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify kafka and nodejs file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -722,56 +829,25 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/cassandra/DataStorage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="41" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/streaming-processing/StreamingProcessing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="975">
-          <caret line="73" column="14" lean-forward="false" selection-start-line="73" selection-start-column="14" selection-end-line="73" selection-end-column="14" />
-          <folding>
-            <element signature="e#188#198#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/kafka/DataProducer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="52" column="28" lean-forward="true" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/cassandra/DataStorage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="41" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/streaming-processing/StreamingProcessing.py">
+    <entry file="file://$PROJECT_DIR$/StreamingProcessing/streaming_processing.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#188#198#0" expanded="true" />
+            <element signature="e#189#199#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/example.py" />
-    <entry file="file://$PROJECT_DIR$/kafka/DataProducer.py">
+    <entry file="file://$PROJECT_DIR$/Kafka/data_producer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kafka/DataConsumer.py">
+    <entry file="file://$PROJECT_DIR$/Kafka/data_consumer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -858,7 +934,7 @@
     <entry file="file://$PROJECT_DIR$/example.py" />
     <entry file="file://$PROJECT_DIR$/kafka/consumerTest.py" />
     <entry file="file://$PROJECT_DIR$/cmd/StartCmd.txt" />
-    <entry file="file://$PROJECT_DIR$/envstartcmd/StartCmd.txt">
+    <entry file="file://$PROJECT_DIR$/Envstartcmd/startcmd.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-450">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -866,7 +942,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/kafka/producerTest.py" />
-    <entry file="file://$PROJECT_DIR$/kafka/DataConsumer.py">
+    <entry file="file://$PROJECT_DIR$/Kafka/data_consumer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="10" lean-forward="false" selection-start-line="0" selection-start-column="10" selection-end-line="0" selection-end-column="10" />
@@ -874,17 +950,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/streaming-processing/StreamingProcessing.py">
+    <entry file="file://$PROJECT_DIR$/StreamingProcessing/streaming_processing.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding>
-            <element signature="e#188#198#0" expanded="true" />
+            <element signature="e#189#199#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Redis/RedisPublisher.py">
+    <entry file="file://$PROJECT_DIR$/Redis/redis_publisher.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="20" column="41" lean-forward="false" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
@@ -892,34 +968,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cassandra/DataStorage.py">
+    <entry file="file://$PROJECT_DIR$/Cassandra/data_storage.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-418">
           <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
-            <marker date="1516680935704" expanded="true" signature="1029:1168" ph="create table... if" />
-            <marker date="1516680935704" expanded="true" signature="1952:2033" ph="INSERT INTO missing_value... " />
+            <marker date="1516685831197" expanded="true" signature="1029:1168" ph="create table... if" />
+            <marker date="1516685831197" expanded="true" signature="1952:2033" ph="INSERT INTO missing_value... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kafka/DataProducer.py">
+    <entry file="file://$PROJECT_DIR$/Kafka/data_producer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="75" column="18" lean-forward="false" selection-start-line="75" selection-start-column="18" selection-end-line="75" selection-end-column="18" />
           <folding>
-            <element signature="e#114#145#0" expanded="true" />
+            <element signature="e#114#145#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/kafka/SearchKafka.py">
+    <entry file="file://$PROJECT_DIR$/Kafka/search_kafka.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="20" column="8" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
           <folding>
-            <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#0#31#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -955,7 +1031,7 @@
         <state relative-caret-position="270">
           <caret line="42" column="36" lean-forward="false" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -964,6 +1040,42 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="25" lean-forward="false" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Docker/dockersetup.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Kafka/data_fetch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StreamingProcessing/streamdata.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1125">
+          <caret line="75" column="28" lean-forward="false" selection-start-line="75" selection-start-column="28" selection-end-line="75" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StreamingProcessing/stock_count.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="28" lean-forward="false" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
           <folding />
         </state>
       </provider>

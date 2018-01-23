@@ -1,6 +1,6 @@
 // - get command line arguments
-// node index.js --port=8080 --redis_host=192.168.99.100 --redis_port=6379 --subscribe_channel=redis-stock-analyzer
-// node index.js --port=8080 --redis_host=192.168.99.100 --redis_port=6379 --subscribe_topic=redis-stock-analyzer
+// node index.js --port=8080 --redis_host=192.168.99.100 --redis_port=6379 --subscribe_channel=Redis-stock-analyzer
+// node index.js --port=8080 --redis_host=192.168.99.100 --redis_port=6379 --subscribe_topic=Redis-stock-analyzer
 var argv = require('minimist')(process.argv.slice(2));
 var port = argv['port'];
 var redis_host = argv['redis_host'];
@@ -13,11 +13,11 @@ var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 
-// - setup redis client
-var redis = require('redis');
-console.log('Creating redis client');
+// - setup Redis client
+var redis = require('Redis');
+console.log('Creating Redis client');
 var redisclient = redis.createClient(redis_port, redis_host);
-console.log('Subscribe to redis topic %s', subscribe_channel);
+console.log('Subscribe to Redis topic %s', subscribe_channel);
 redisclient.subscribe(subscribe_channel);
 redisclient.on('message', function(channel, message){
     if(channel = subscribe_channel){
@@ -38,7 +38,7 @@ server.listen(port, function () {
 
 // - setup shutdown hook
 var shutdown_hook = function(){
-    console.log('Quitting redis client');
+    console.log('Quitting Redis client');
     redisclient.quit();
     console.log('Shutting down app');
     process.exit();
@@ -60,11 +60,11 @@ var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 
-// - setup redis client
-var redis = require('redis');
-console.log('Creating a redis client');
+// - setup Redis client
+var redis = require('Redis');
+console.log('Creating a Redis client');
 var redisclient = redis.createClient(redis_port, redis_host);
-console.log('Subscribing to redis topic %s', subscribe_topic);
+console.log('Subscribing to Redis topic %s', subscribe_topic);
 redisclient.subscribe(subscribe_topic);
 redisclient.on('message', function (channel, message) {
     if (channel == subscribe_topic) {
@@ -86,7 +86,7 @@ server.listen(port, function () {
 
 // - setup shutdown hooks
 var shutdown_hook = function () {
-    console.log('Quitting redis client');
+    console.log('Quitting Redis client');
     redisclient.quit();
     console.log('Shutting down app');
     process.exit();

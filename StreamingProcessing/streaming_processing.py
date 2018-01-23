@@ -1,6 +1,6 @@
 # 1, read from kafka, kafka broker, kafka topic
-# 2, write data back to kafka, kafka broker, kafka topic
-# under the current path and run spark-submit --jars *.jar StreamingProcessing.py
+# 2, write data back to Kafka, Kafka broker, Kafka topic
+# under the current path and run spark-submit --jars *.jar streaming_processing.py
 
 import sys
 import atexit
@@ -10,8 +10,8 @@ import time
 from pyspark import SparkContext
 from pyspark.streaming import StreamingContext
 from pyspark.streaming.kafka import KafkaUtils
-from kafka import KafkaProducer
-from kafka.errors import KafkaError, KafkaTimeoutError
+from Kafka import KafkaProducer
+from Kafka.errors import KafkaError, KafkaTimeoutError
 from ast import literal_eval
 
 topic = 'stock-analyzer'
@@ -35,10 +35,10 @@ def process_stream(stream):
             )
             print('data:', data.encode('utf-8'))
             try:
-                logger.info('Sending average price %s to kafka' %data)
+                logger.info('Sending average price %s to Kafka' %data)
                 kafka_producer.send(new_topic, value = data.encode('utf-8'))
             except KafkaError as error:
-                logger.warn('Failed to send average stock price to kafka, casued by %s', error.message)
+                logger.warn('Failed to send average stock price to Kafka, casued by %s', error.message)
 
     def pair(data):
         record = json.loads(literal_eval(data[1]))[0]
@@ -66,18 +66,18 @@ def process_stream(stream):
 
 def shutdown_hook(producer):
     try:
-        logger.info('Flush pending messages to kafka')
+        logger.info('Flush pending messages to Kafka')
         # - flush(10) 10 is ten seconds timeout
         producer.flush(10)
         logger.info('Finish flushing pending message')
     except KafkaError as kafka_error:
-        logger.warn('Failed to flush pending message to kafka')
+        logger.warn('Failed to flush pending message to Kafka')
     finally:
         try:
             producer.close(10)
         except Exception as e:
-            logger.warn('Failed to close kafka connection')
-        logger.info('Finish closing kafka producer')
+            logger.warn('Failed to close Kafka connection')
+        logger.info('Finish closing Kafka producer')
 
 if __name__ == '__main__':
     # if(len(sys.argv) != 4):
@@ -97,7 +97,7 @@ if __name__ == '__main__':
     directKafkaStream = KafkaUtils.createDirectStream(ssc, [topic], {'metadata.broker.list' : kafka_broker})
     # - for each RDD, do something
     process_stream(directKafkaStream)
-    # - instantiate kafka producer
+    # - instantiate Kafka producer
     kafka_producer = KafkaProducer(bootstrap_servers=kafka_broker)
     # - setup proper shutdown hook
     atexit.register(shutdown_hook, kafka_producer)

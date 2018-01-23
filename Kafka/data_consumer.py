@@ -1,4 +1,4 @@
-from kafka import KafkaConsumer
+from Kafka import KafkaConsumer
 
 topic = 'stock-analyzer'
 new_topic = 'average-stock-analyzer'

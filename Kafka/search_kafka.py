@@ -1,4 +1,4 @@
-from kafka import KafkaConsumer
+from Kafka import KafkaConsumer
 import json
 import logging
 from datetime import datetime
