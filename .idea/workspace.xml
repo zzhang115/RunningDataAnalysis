@@ -2,21 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05a445b5-9128-469d-abf3-75028f51b9d8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Docker/dockersetup.sh" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Kafka/data_fetch.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/StreamingProcessing/stock_count.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/StreamingProcessing/streamdata.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Redis/RedisPublisher.py" afterPath="$PROJECT_DIR$/Redis/redis_publisher.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/cassandra/DataStorage.py" afterPath="$PROJECT_DIR$/Cassandra/data_storage.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/envstartcmd/StartCmd.txt" afterPath="$PROJECT_DIR$/Envstartcmd/startcmd.txt" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kafka/DataConsumer.py" afterPath="$PROJECT_DIR$/Kafka/data_consumer.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kafka/DataProducer.py" afterPath="$PROJECT_DIR$/Kafka/data_producer.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/kafka/SearchKafka.py" afterPath="$PROJECT_DIR$/Kafka/search_kafka.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/streaming-processing/StreamingProcessing.py" afterPath="$PROJECT_DIR$/StreamingProcessing/streaming_processing.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/streaming-processing/dump.rdb" afterPath="$PROJECT_DIR$/StreamingProcessing/dump.rdb" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/streaming-processing/spark-streaming-kafka-0-8-assembly_2.11-2.2.0.jar" afterPath="$PROJECT_DIR$/StreamingProcessing/spark-streaming-kafka-0-8-assembly_2.11-2.2.0.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cassandra/denormalize.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Cassandra/orders.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/index.js" afterPath="$PROJECT_DIR$/Nodejs/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/build/nv.d3.css" afterPath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/build/nv.d3.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/build/nv.d3.js" afterPath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/build/nv.d3.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/examples/documentation.html" afterPath="$PROJECT_DIR$/Nodejs/node_modules/nvd3/examples/documentation.html" />
@@ -51,7 +39,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/examples/server-load.js" afterPath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/examples/server-load.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/smoothie.d.ts" afterPath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/smoothie.d.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/smoothie.js" afterPath="$PROJECT_DIR$/Nodejs/node_modules/smoothie/smoothie.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/cachecontrol/caches/__init__.py" afterPath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/cachecontrol/caches/__init__.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/StreamingProcessing/stream_monitor.py" afterPath="$PROJECT_DIR$/StreamingProcessing/stream_monitor.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -94,8 +82,8 @@
       <file leaf-file-name="streamdata.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/StreamingProcessing/streamdata.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1125">
-              <caret line="75" column="28" lean-forward="false" selection-start-line="75" selection-start-column="28" selection-end-line="75" selection-end-column="28" />
+            <state relative-caret-position="225">
+              <caret line="15" column="35" lean-forward="false" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -103,12 +91,48 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stock_count.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="orders.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Cassandra/orders.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="808">
+              <caret line="79" column="9" lean-forward="false" selection-start-line="79" selection-start-column="9" selection-end-line="79" selection-end-column="9" />
+              <folding>
+                <element signature="e#0#34#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="denormalize.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Cassandra/denormalize.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="732">
+              <caret line="70" column="48" lean-forward="false" selection-start-line="70" selection-start-column="48" selection-end-line="70" selection-end-column="48" />
+              <folding>
+                <element signature="e#0#34#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="stock_count.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/StreamingProcessing/stock_count.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="28" lean-forward="false" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="stream_monitor.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/StreamingProcessing/stream_monitor.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="406">
+              <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#43#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -159,6 +183,9 @@
         <option value="$PROJECT_DIR$/StreamingProcessing/DataFetch.py" />
         <option value="$PROJECT_DIR$/StreamingProcessing/Stream.py" />
         <option value="$PROJECT_DIR$/StreamingProcessing/stock_count.py" />
+        <option value="$PROJECT_DIR$/StreamingProcessing/stream_monitor.py" />
+        <option value="$PROJECT_DIR$/Cassandra/orders.py" />
+        <option value="$PROJECT_DIR$/Cassandra/denormalize.py" />
       </list>
     </option>
   </component>
@@ -174,8 +201,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="47" />
     <option name="y" value="24" />
-    <option name="width" value="1319" />
-    <option name="height" value="744" />
+    <option name="width" value="1873" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -779,14 +806,28 @@
       <option name="project" value="LOCAL" />
       <updated>1516683464815</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="add kafka and spark handle data code">
+      <created>1516688595630</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1516688595630</updated>
+    </task>
+    <task id="LOCAL-00013" summary="add stream monitor">
+      <created>1516689107170</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1516689107170</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="47" y="24" width="1319" height="744" extended-state="6" />
+    <frame x="47" y="24" width="1873" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23566379" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16420361" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -820,7 +861,9 @@
     <MESSAGE value="modify cassandra" />
     <MESSAGE value="modify kafka" />
     <MESSAGE value="modify kafka and nodejs file" />
-    <option name="LAST_COMMIT_MESSAGE" value="modify kafka and nodejs file" />
+    <MESSAGE value="add kafka and spark handle data code" />
+    <MESSAGE value="add stream monitor" />
+    <option name="LAST_COMMIT_MESSAGE" value="add stream monitor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -829,24 +872,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/StreamingProcessing/streaming_processing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#189#199#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example.py" />
-    <entry file="file://$PROJECT_DIR$/Kafka/data_producer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Kafka/data_consumer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -938,6 +963,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-450">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1062,21 +1088,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/StreamingProcessing/streamdata.py">
+    <entry file="file://$PROJECT_DIR$/StreamingProcessing/stock_count.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1125">
-          <caret line="75" column="28" lean-forward="false" selection-start-line="75" selection-start-column="28" selection-end-line="75" selection-end-column="28" />
+        <state relative-caret-position="0">
+          <caret line="0" column="28" lean-forward="false" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/StreamingProcessing/stream_monitor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
           <folding>
             <element signature="e#0#43#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/StreamingProcessing/stock_count.py">
+    <entry file="file://$PROJECT_DIR$/StreamingProcessing/streamdata.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="28" lean-forward="false" selection-start-line="0" selection-start-column="28" selection-end-line="0" selection-end-column="28" />
-          <folding />
+        <state relative-caret-position="225">
+          <caret line="15" column="35" lean-forward="false" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Cassandra/orders.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="808">
+          <caret line="79" column="9" lean-forward="false" selection-start-line="79" selection-start-column="9" selection-end-line="79" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Cassandra/denormalize.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="732">
+          <caret line="70" column="48" lean-forward="false" selection-start-line="70" selection-start-column="48" selection-end-line="70" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
