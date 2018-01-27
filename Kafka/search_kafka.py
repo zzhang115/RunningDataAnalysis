@@ -49,6 +49,7 @@ class ElasticSearch():
             bulk.append(dct)
             self.es.bulk(index="test_index",body=bulk)
             bulk=[]
+
 if __name__ == '__main__':
     ES=ElasticSearch("Elastic Search","192.168.99.100:9092")
     ES.create_index()

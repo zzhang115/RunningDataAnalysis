@@ -14,8 +14,8 @@ from Kafka import KafkaProducer
 from Kafka.errors import KafkaError, KafkaTimeoutError
 from ast import literal_eval
 
-topic = 'stock-analyzer'
-new_topic = 'average-stock-analyzer'
+topic = 'running-analyzer'
+new_topic = 'average-running-analyzer'
 kafka_broker = '192.168.99.100:9092'
 logger_format = '%(asctime)-15s %(message)s'
 logging.basicConfig(format=logger_format)
@@ -38,12 +38,12 @@ def process_stream(stream):
                 logger.info('Sending average price %s to Kafka' %data)
                 kafka_producer.send(new_topic, value = data.encode('utf-8'))
             except KafkaError as error:
-                logger.warn('Failed to send average stock price to Kafka, casued by %s', error.message)
+                logger.warn('Failed to send average running price to Kafka, casued by %s', error.message)
 
     def pair(data):
         record = json.loads(literal_eval(data[1]))[0]
-        print(record.get('StockSymbol'), '---', (float(record.get('LastTradePrice')), 1))
-        return record.get('StockSymbol'), (float(record.get('LastTradePrice')), 1)
+        print(record.get('runningSymbol'), '---', (float(record.get('LastTradePrice')), 1))
+        return record.get('runningSymbol'), (float(record.get('LastTradePrice')), 1)
 
     # def pair2(symbol, x_y): # missing 1 required positional argument: 'x_y'
     #     return symbol, x_y[0] / x_y[1]
@@ -57,8 +57,8 @@ def process_stream(stream):
     # print(rdd.map(lambda record : record))
     # price_sum = rdd.map(lambda record: float(json.loads(record[1].decode('utf-8'))[0].get('LastTradePrice'))).reduce(lambda  a, b : a + b)
     # average_price = price_sum / num_of_records
-    # stock_data = literal_eval(stock_data.decode('utf-8'))
-    # json_dict= json.loads(stock_data)[0]
+    # running_data = literal_eval(running_data.decode('utf-8'))
+    # json_dict= json.loads(running_data)[0]
     # price = float(json_dict.get('LastTradePrice'))
     # parsed = stream.map(lambda v : json.loads(v[1]))
     # lines = stream.map(lambda x : x[1])
@@ -87,7 +87,7 @@ if __name__ == '__main__':
     # - setup connection to spark cluster
     # - 2 means how many cores we use for computation
     # - spark program name
-    sc = SparkContext('local[2]', 'StockAveragePrice')
+    sc = SparkContext('local[2]', 'runningAveragePrice')
     # - spark has its own logger
     sc.setLogLevel('ERROR')
     # - similar to water tap, open water tap per 5 seconds to handle data

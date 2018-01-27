@@ -10,18 +10,15 @@ conf = SparkConf().set('spark.cassandra.connection.host', ','.join(cluster_seeds
 sc = pyspark_cassandra.CassandraSparkContext(conf=conf)
 sqlContext = SQLContext(sc)
 
-
-def append((price1, part1), (price2, part2)):
+def append(price1, part1, price2, part2):
     price = price1
     part = part1 + ", " + part2
     return (price, part)
-
 
 def rdd_for(keyspace, table, split_size=None):
     rdd = sc.cassandraTable(keyspace, table, split_size=split_size,
                             row_format=pyspark_cassandra.RowFormat.DICT).setName(table)
     return rdd
-
 
 def main(argv=None):
     if argv is None:
@@ -75,7 +72,6 @@ def main(argv=None):
         .map(lambda (order, price, part): "Order #%s $%.2f: %s" % (order, price, part))
     # I have thought about combining this data onto one node. It is safe since the output data is small.
     outdata.coalesce(1).saveAsTextFile(output)
-
 
 if __name__ == "__main__":
     main()

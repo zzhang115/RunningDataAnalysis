@@ -6,9 +6,9 @@ import atexit
 import Redis
 import logging
 
-topic_name = 'average-stock-analyzer'
+topic_name = 'average-running-analyzer'
 kafka_broker = '192.168.99.100:9092'
-redis_channel = 'Redis-stock-analyzer'
+redis_channel = 'Redis-running-analyzer'
 redis_host = '192.168.99.100'
 redis_port = '6379'
 

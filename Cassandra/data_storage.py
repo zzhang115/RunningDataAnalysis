@@ -11,10 +11,10 @@ import atexit # it means when it exit, this is charge to do something
 from ast import literal_eval
 
 # default Kafka and Cassandra setting
-topic_name = 'stock-analyzer'
+topic_name = 'running-analyzer'
 kafka_broker = '192.168.99.100:9092'
-keyspace = 'stock'
-table = 'stock'
+keyspace = 'running'
+table = 'running'
 cassandra_broker = ['192.168.99.100']
 
 # - logging file configuration
@@ -31,24 +31,28 @@ def create(self):
         "'replication_factor':'3'} and durable_writes= 'true'" % self.__keyspace)
     self.cassandra_session.set_keyspace(self.__keyspace)
     self.cassandra_session.execute(
-        "create table if not exists %s(stock_symbol text,trade_time timestamp,trade_price float, "
-        "primary key ((stock_symbol),trade_time))" % self.__data_table)
+        "create table if not exists %s(running_symbol text,trade_time timestamp,trade_data float, "
+        "primary key ((running_symbol),trade_time))" % self.__data_table)
 
-def persist_data(stock_data, cassandra_session):
+def persist_data(running_data, cassandra_session):
     '''
-    :param stock_data:
+    :param running_data:
     :param cassandra_session: a session created using Cassandra-driver
     :return: None
     '''
-    logger.debug('Start to persist data to Cassandra%s', stock_data)
-    # - stock_data we get is just byte array, we need to transfer it to json array string, then use literal_eval to transfter string to list
-    stock_data = literal_eval(stock_data.decode('utf-8'))
-    json_dict= json.loads(stock_data)[0]
-    # decode_stock_data = stock_data.decode('utf-8').replace('\\\"', '\"').replace('\"[', '').replace(']\"', '')
-    symbol = json_dict.get('StockSymbol')
-    price = float(json_dict.get('LastTradePrice'))
+    logger.debug('Start to persist data to Cassandra%s', running_data)
+    # - running_data we get is just byte array, we need to transfer it to json array string, then use literal_eval to transfter string to list
+    running_data = literal_eval(running_data.decode('utf-8'))
+    json_dict= json.loads(running_data)[0]
+    # decode_running_data = running_data.decode('utf-8').replace('\\\"', '\"').replace('\"[', '').replace(']\"', '')
+    symbol = json_dict.get('runningSymbol')
+    data = float(json_dict.get('LastTradedata'))
+    location = json_dict.get('Location')
+    distance = json_dict.get('Distance')
+    elevation = json_dict.get('Elevation')
+    pace = json_dict.get('Pace')
     tradetime = json_dict.get('LastTradeDateTime')
-    statement = 'INSERT INTO %s (stock_symbol, trade_time, trade_price) VALUES(\'%s\', \'%s\', %f)' %(table, symbol, tradetime, price)
+    statement = 'INSERT INTO %s (running_symbol, data, location, distance, elevation, pace) VALUES(\'%s\', \'%s\', %f)' %(table, running_symbol, data, location, distance, elevation, pace)
     cassandra_session.execute(statement)
     logger.info('finish insert data into Cassandra table')
 

@@ -4,7 +4,7 @@ $(function () {
 
     $("#chart").height($(window).height() - $("#header").height() * 2);
 
-    $(document.body).on('click', '.stock-label', function () {
+    $(document.body).on('click', '.running-label', function () {
 
         "use strict";
         var symbol = $(this).text();
@@ -21,23 +21,23 @@ $(function () {
         console.log(data_points);
     });
 
-    $("#add-stock-button").click(function () {
+    $("#add-running-button").click(function () {
         "use strict";
-        var symbol = $("#stock-symbol").val();
+        var symbol = $("#running-symbol").val();
 
         $.ajax({
             url: 'http://localhost:5000/' + symbol + '/add',
             type: 'POST'
         });
 
-        $("#stock-symbol").val("");
+        $("#running-symbol").val("");
         data_points.push({
             values: [],
             key: symbol
         });
 
-        $("#stock-list").append(
-            "<a class='stock-label list-group-item small'><span style='color:red'>" + symbol + "</span></a>"
+        $("#running-list").append(
+            "<a class='running-label list-group-item small'><span style='color:red'>" + symbol + "</span></a>"
         );
 
         console.log(data_points);
@@ -89,7 +89,7 @@ $(function () {
         parsed = JSON.parse(parsed);
         var timestamp = parsed['TimeStamp'];
         var average = parsed['AveragePrice'];
-        var symbol = parsed['StockSymbol'];
+        var symbol = parsed['runningSymbol'];
         var point = {};
         point.x = timestamp;
         point.y = average;

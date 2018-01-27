@@ -12,7 +12,7 @@ import schedule
 import time
 
 # - default kafka topic to write to
-topic_name = 'stock-analyzer'
+topic_name = 'running-analyzer'
 
 # - default kafka broker location
 kafka_broker = '127.0.0.1:9092'
@@ -24,28 +24,28 @@ logger = logging.getLogger('data-producer')
 logger.setLevel(logging.DEBUG)
 
 
-def fetch_price(producer, symbol):
+def fetch_data(producer, symbol):
     """
-    helper function to retrieve stock data and send it to kafka
+    helper function to retrieve running data and send it to kafka
     :param producer: instance of a kafka producer
-    :param symbol: symbol of the stock
+    :param symbol: symbol of the running
     :return: None
     """
-    logger.debug('Start to fetch stock price for %s', symbol)
+    logger.debug('Start to fetch running data for %s', symbol)
     try:
-        # price = json.dumps(getQuotes(symbol))
+        # data = json.dumps(getQuotes(symbol))
 
-        price = random.randint(30, 120)
+        data = random.randint(30, 120)
         timestamp = datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%dT%H:%MZ')
-        payload = ('[{"StockSymbol":"AAPL","LastTradePrice":%d,"LastTradeDateTime":"%s"}]' % (price, timestamp)).encode('utf-8')
+        payload = ('[{"runningSymbol":"AAPL","LastTradedata":%d,"LastTradeDateTime":"%s"}]' % (data, timestamp)).encode('utf-8')
 
-        logger.debug('Retrieved stock info %s', price)
+        logger.debug('Retrieved running info %s', data)
         producer.send(topic=topic_name, value=payload, timestamp_ms=time.time())
-        logger.debug('Sent stock price for %s to Kafka', symbol)
+        logger.debug('Sent running data for %s to Kafka', symbol)
     except KafkaTimeoutError as timeout_error:
-        logger.warn('Failed to send stock price for %s to kafka, caused by: %s', (symbol, timeout_error.message))
+        logger.warn('Failed to send running data for %s to kafka, caused by: %s', (symbol, timeout_error.message))
     except Exception:
-        logger.warn('Failed to fetch stock price for %s', symbol)
+        logger.warn('Failed to fetch running data for %s', symbol)
 
 
 def shutdown_hook(producer):
@@ -71,7 +71,7 @@ def shutdown_hook(producer):
 if __name__ == '__main__':
     # - setup command line arguments
     parser = argparse.ArgumentParser()
-    parser.add_argument('symbol', help='the symbol of the stock to collect')
+    parser.add_argument('symbol', help='the symbol of the running to collect')
     parser.add_argument('topic_name', help='the kafka topic push to')
     parser.add_argument('kafka_broker', help='the location of the kafka broker')
 
@@ -86,8 +86,8 @@ if __name__ == '__main__':
         bootstrap_servers=kafka_broker
     )
 
-    # - schedule and run the fetch_price function every second
-    schedule.every(1).second.do(fetch_price, producer, symbol)
+    # - schedule and run the fetch_data function every second
+    schedule.every(1).second.do(fetch_data, producer, symbol)
 
     # - setup proper shutdown hook
     atexit.register(shutdown_hook, producer)
