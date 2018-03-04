@@ -30,39 +30,25 @@ def process_stream(stream):
                 {
                     'symbol' : r[0],
                     'timestamp' : time.time(),
-                    'average' : int(r[1][0]) / int(r[1][1])
+                    'average_distance' : int(r[1][0]) / int(r[1][1])
                 }
             )
             print('data:', data.encode('utf-8'))
             try:
-                logger.info('Sending average price %s to Kafka' %data)
+                logger.info('Sending average distance %s to Kafka' %data)
                 kafka_producer.send(new_topic, value = data.encode('utf-8'))
             except KafkaError as error:
-                logger.warn('Failed to send average running price to Kafka, casued by %s', error.message)
+                logger.warn('Failed to send average running to Kafka, casued by %s', error.message)
 
     def pair(data):
         record = json.loads(literal_eval(data[1]))[0]
-        print(record.get('runningSymbol'), '---', (float(record.get('LastTradePrice')), 1))
-        return record.get('runningSymbol'), (float(record.get('LastTradePrice')), 1)
+        print(record.get('runningSymbol'), '---', (float(record.get('LastRuningDistance')), 1))
+        return record.get('runningSymbol'), (float(record.get('LastRuningDistance')), 1)
 
     # def pair2(symbol, x_y): # missing 1 required positional argument: 'x_y'
     #     return symbol, x_y[0] / x_y[1]
     # stream receive not just one message at the same time, so it use reduceByKey
     stream.map(pair).reduceByKey(lambda a, b: (a[0] + b[0], a[1] + b[1])).foreachRDD(send_to_kafka)
-
-    # num_of_records = rdd.count()
-    # print(num_of_records)
-    # if num_of_records == 0:
-    #     return
-    # print(rdd.map(lambda record : record))
-    # price_sum = rdd.map(lambda record: float(json.loads(record[1].decode('utf-8'))[0].get('LastTradePrice'))).reduce(lambda  a, b : a + b)
-    # average_price = price_sum / num_of_records
-    # running_data = literal_eval(running_data.decode('utf-8'))
-    # json_dict= json.loads(running_data)[0]
-    # price = float(json_dict.get('LastTradePrice'))
-    # parsed = stream.map(lambda v : json.loads(v[1]))
-    # lines = stream.map(lambda x : x[1])
-    # print(lines)
 
 def shutdown_hook(producer):
     try:
