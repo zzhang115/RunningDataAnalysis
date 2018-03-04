@@ -52,7 +52,7 @@ def persist_data(running_data, cassandra_session):
     elevation = json_dict.get('Elevation')
     pace = json_dict.get('Pace')
     tradetime = json_dict.get('LastTradeDateTime')
-    statement = 'INSERT INTO %s (running_symbol, data, location, distance, elevation, pace) VALUES(\'%s\', \'%s\', %f)' %(table, running_symbol, data, location, distance, elevation, pace)
+    statement = 'INSERT INTO %s (running_symbol, data, location, distance, elevation, pace) VALUES(\'%s\', \'%s\', %f, %f, %f)' %(table, running_symbol, data, location, distance, elevation, pace)
     cassandra_session.execute(statement)
     logger.info('finish insert data into Cassandra table')
 
