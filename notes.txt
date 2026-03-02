@@ -1,0 +1,1 @@
+https://api.schwabapi.com/v1/oauth/authorize?client_id=ZXKMEXA6kQhgdjgQkrwfyB2ouNLCASlX&redirect_uri=https://127.0.0.1:8182/callback
